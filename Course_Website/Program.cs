@@ -1,5 +1,9 @@
+using Course_Website.StartUpExtension;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllersWithViews();
+builder.Services.ServicesStartUp(builder.Configuration);
 var app = builder.Build();
 
 app.UseHsts();
