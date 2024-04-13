@@ -5,7 +5,7 @@
         public static IServiceCollection ServicesStartUp (this IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllersWithViews ();
-
+            
             return services;
         }
     }
