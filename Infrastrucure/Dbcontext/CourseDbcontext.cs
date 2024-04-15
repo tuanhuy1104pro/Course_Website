@@ -9,8 +9,8 @@ namespace Infrastrucure.Dbcontext
 {
     public class CourseDbcontext : DbContext
     {
-        DbSet<Category> Categories { get; set; }
-        DbSet<Course> Courses { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public CourseDbcontext(DbContextOptions option) : base(option)
         {
             

@@ -23,11 +23,5 @@ namespace Course_Website.Controllers
         {
             return View();
         }
-
-        [Route("/Course", Name = "Course")]
-        public IActionResult Course()
-        {
-            return View();
-        }
     }
 }
