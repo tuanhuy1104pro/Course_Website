@@ -1,0 +1,51 @@
+[
+  {
+    "CourseId": 1,
+    "CourseName": "ecollingridge0",
+    "CourseDescription": "escriven0",
+    "CoursePrice": 74,
+    "CategoryId": "CA834AA4-7F87-4DF5-A29E-A856071BE701"
+  },
+  {
+    "CourseId": 2,
+    "CourseName": "wgreenstreet1",
+    "CourseDescription": "ejeavon1",
+    "CoursePrice": 90,
+    "CategoryId": "CA834AA4-7F87-4DF5-A29E-A856071BE701"
+  },
+  {
+    "CourseId": 3,
+    "CourseName": "hhockey2",
+    "CourseDescription": "cprendergast2",
+    "CoursePrice": 76,
+    "CategoryId": "CA834AA4-7F87-4DF5-A29E-A856071BE701"
+  },
+  {
+    "CourseId": 4,
+    "CourseName": "kfaichnie3",
+    "CourseDescription": "mbuckleigh3",
+    "CoursePrice": 24,
+    "CategoryId": "AE4B2F2E-2C3C-44C6-AB6F-4618254EEF91"
+  },
+  {
+    "CourseId": 5,
+    "CourseName": "pchristofle4",
+    "CourseDescription": "nwholesworth4",
+    "CoursePrice": 64,
+    "CategoryId": "AE4B2F2E-2C3C-44C6-AB6F-4618254EEF91"
+  },
+  {
+    "CourseId": 6,
+    "CourseName": "lcovelle5",
+    "CourseDescription": "emilier5",
+    "CoursePrice": 95,
+    "CategoryId": "AE4B2F2E-2C3C-44C6-AB6F-4618254EEF91"
+  },
+  {
+    "CourseId": 7,
+    "CourseName": "dfranzel6",
+    "CourseDescription": "rheino6",
+    "CoursePrice": 86,
+    "CategoryId": "CA834AA4-7F87-4DF5-A29E-A856071BE701"
+  }
+]
