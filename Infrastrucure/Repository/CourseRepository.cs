@@ -58,11 +58,7 @@ namespace Infrastrucure.Repository
         {
             //Matching course 
             Course matchingCourse = await _dbcontext.Courses.FirstOrDefaultAsync(temp => temp.CourseId == course.CourseId);
-            if(matchingCourse == null)
-            {
-                 new ArgumentException("Course didn't exist");
-                return course;
-            }
+           
             matchingCourse.CourseName = course.CourseName;
             matchingCourse.CourseDescription = course.CourseDescription;
             matchingCourse.CoursePrice = course.CoursePrice;

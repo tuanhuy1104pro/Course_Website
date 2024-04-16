@@ -1,4 +1,5 @@
 ﻿using CourseEdu_Core.Domain.Model;
+using CourseEdu_Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace CourseEdu_Core.IServices
 {
     public interface ICategoryServices
     {
-        public Task<List<Category>> GetList();
-        public Task<Category> GetById(string id);
-        public Task<Category> GetByName(string name);
-        public Task<Category> Add();
-        public Task<Category> Update();
-        public Task<Category> Delete();
-        public Task<Category> Edit();
+        public Task<List<CategoryRespone>> GetList();
+        public Task<CategoryRespone> GetById(string id);
+        public Task<CategoryRespone> GetByName(string name);
+        public Task<CategoryRespone> Add(CategoryAddRequest categoryAdd);
+        public Task<CategoryRespone> Update(CategoryRespone categoryRespone);
+        public Task<CategoryRespone> Delete(CategoryRespone categoryRespone);
+        public Task<CategoryRespone> Edit(CategoryRespone categoryRespone);
 
     }
 }
