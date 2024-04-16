@@ -16,7 +16,6 @@ namespace CourseEdu_Core.Domain.Model
         public string CourseDescription { get; set; }
         public double CoursePrice { get; set; }
         public string CategoryId { get; set; }
-
         [ForeignKey(nameof(CategoryId))]
         public virtual Category? Category { get; set; }
     }
