@@ -18,7 +18,8 @@ namespace CourseEdu_Core.DTO
         public double CoursePrice { get; set; }
         [Required(ErrorMessage = "Id cannot be blank")]
         public string CategoryId { get; set; }
-
+        
+       
         public Course toCourse()
         {
             return new Course() { CourseName = CourseName, CourseDescription = CourseDescription, CoursePrice = CoursePrice, CategoryId = CategoryId };    
