@@ -39,7 +39,11 @@ namespace Infrastrucure.Repository
             return category;
         }
 
-       
+        public async Task<Category> GetByName(string name)
+        {
+           Category category = await _dbcontext.Categories.FirstOrDefaultAsync(temp => temp.CategoryName == name);
+            return category;
+        }
 
         async Task<List<Category>> ICategoryRepository.GetAll()
         {

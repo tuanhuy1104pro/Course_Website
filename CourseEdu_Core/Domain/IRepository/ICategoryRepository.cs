@@ -12,6 +12,7 @@ namespace CourseEdu_Core.Domain.IRepository
         public  Task<Category> AddCategory(Category category);
         public Task<List<Category>> GetAll();
         public Task<Category> GetById(string id);
+        public Task<Category> GetByName(string id);
         public Task<bool> DeleteById(string id);
     }
 }

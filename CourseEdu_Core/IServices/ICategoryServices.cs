@@ -15,7 +15,7 @@ namespace CourseEdu_Core.IServices
         public Task<CategoryRespone> GetByName(string name);
         public Task<CategoryRespone> Add(CategoryAddRequest categoryAdd);
         public Task<CategoryRespone> Update(CategoryRespone categoryRespone);
-        public Task<CategoryRespone> Delete(CategoryRespone categoryRespone);
+        public Task<CategoryRespone> Delete(string id);
         public Task<CategoryRespone> Edit(CategoryRespone categoryRespone);
 
     }
