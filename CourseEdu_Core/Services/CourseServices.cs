@@ -39,9 +39,11 @@ namespace CourseEdu_Core.Services
             return listCourse.Select(temp => temp.toCourseRespone()).ToList();
         }
 
-        public Task<CourseRespone> GetById(int id)
+        public async Task<CourseRespone> GetById(int id)
         {
-            throw new NotImplementedException();
+            if(id == null) throw new ArgumentNullException("id miss");
+            Course course = await _courseRepository.GetById(id);
+            return course.toCourseRespone();
         }
 
         public Task<CourseRespone> GetByName(string name)
