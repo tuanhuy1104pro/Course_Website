@@ -39,7 +39,13 @@ namespace CourseEdu_Core.Services
 
         public async Task<bool> DeleteById(int id)
         {
-            bool result =await _courseRepository.DeleteById(id);
+            Course course = await _courseRepository.GetById(id);
+            if(course == null)
+            {
+               return false;
+            }
+            ///
+            bool result =await _courseRepository.DeleteById(course.CourseId);
             return result;
         }
 
