@@ -34,22 +34,40 @@ namespace CourseEdu_Core.Services
         public async Task<List<CourseRespone>> FilterCourse(string searchBy, string searchString)
         {
             List<CourseRespone> allCourse = await GetAll();
-            List<CourseRespone> matchPersons = await GetAll();
-            if(string.IsNullOrEmpty(searchBy) || string.IsNullOrEmpty(searchString)
+            List<CourseRespone> matchCourse = await GetAll();
+            if(string.IsNullOrEmpty(searchBy) || string.IsNullOrEmpty(searchString))
             {
-                return matchPersons;
+                return matchCourse;
             }
             switch (searchBy)
             {
                 case nameof(CourseRespone.CourseName):
                     {
-                        matchPersons = allCourse.Where(temp => )
+                        matchCourse = allCourse.Where(temp => (!string.IsNullOrEmpty(temp.CourseName)? temp.CourseName.Contains(searchString,StringComparison.OrdinalIgnoreCase):true)).ToList();
                         break;
                     }
-                  
+                case nameof(CourseRespone.CategoryId):
+                    {
+                        matchCourse = allCourse.Where(temp =>
+                        {
+                            if (!string.IsNullOrEmpty(temp.CategoryId))
+                            {
+                                return temp.CourseName.Contains(searchString, StringComparison.OrdinalIgnoreCase) && temp.CategoryId.Contains(searchBy,StringComparison.OrdinalIgnoreCase);
+                                
+                            }
+                            else return true;
+                        }).ToList();
+                        break;
+                    }
+
                 default:
-                    break;
+                    {
+                        matchCourse = allCourse;
+                        break;
+                    }
+              
             }
+            return matchCourse;
         }
 
         public async Task<List<CourseRespone>> GetAll()
