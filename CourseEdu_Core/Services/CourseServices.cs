@@ -20,9 +20,14 @@ namespace CourseEdu_Core.Services
             _courseRepository = courseRepository;
             _categoryServices = categoryServices;   
         }
-        public Task<CourseRespone> AddCourse(CourseAddRequest course)
+        public Task<CourseRespone> AddCourse(CourseAddRequest courseaddrequest)
         {
-            throw new NotImplementedException();
+            if(courseaddrequest == null)
+            {
+                throw new ArgumentNullException(nameof(courseaddrequest));
+            }
+
+
         }
 
         public async Task<bool> DeleteById(int id)
@@ -34,7 +39,7 @@ namespace CourseEdu_Core.Services
         public async Task<List<CourseRespone>> FilterCourse(string searchBy, string searchString)
         {
             List<CourseRespone> allCourse = await GetAll();
-            List<CourseRespone> matchCourse = await GetAll();
+            List<CourseRespone> matchCourse = allCourse;
             if(string.IsNullOrEmpty(searchBy) || string.IsNullOrEmpty(searchString))
             {
                 return matchCourse;
