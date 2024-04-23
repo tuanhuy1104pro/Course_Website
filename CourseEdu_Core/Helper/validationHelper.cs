@@ -16,7 +16,7 @@ namespace CourseEdu_Core.Helper
             bool isValid = Validator.TryValidateObject(obj, validationContext,validationResults);
             if (!isValid)
             {
-                throw new ArgumentException(validationResults.FirstOrDefault().ErrorMessage);
+                throw new ArgumentException(validationResults.FirstOrDefault()?.ErrorMessage);
             }
         }
     }
