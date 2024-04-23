@@ -31,9 +31,25 @@ namespace CourseEdu_Core.Services
             return result;
         }
 
-        public Task<List<CourseRespone>> FilterCourse(string searchBy, string searchString)
+        public async Task<List<CourseRespone>> FilterCourse(string searchBy, string searchString)
         {
-           throw new ArgumentException(nameof(searchString));
+            List<CourseRespone> allCourse = await GetAll();
+            List<CourseRespone> matchPersons = await GetAll();
+            if(string.IsNullOrEmpty(searchBy) || string.IsNullOrEmpty(searchString)
+            {
+                return matchPersons;
+            }
+            switch (searchBy)
+            {
+                case nameof(CourseRespone.CourseName):
+                    {
+                        matchPersons = allCourse.Where(temp => )
+                        break;
+                    }
+                  
+                default:
+                    break;
+            }
         }
 
         public async Task<List<CourseRespone>> GetAll()
