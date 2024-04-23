@@ -2,10 +2,13 @@
 using CourseEdu_Core.Domain.Model;
 using CourseEdu_Core.DTO;
 using CourseEdu_Core.Enum;
+using CourseEdu_Core.Helper;
 using CourseEdu_Core.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,13 +23,17 @@ namespace CourseEdu_Core.Services
             _courseRepository = courseRepository;
             _categoryServices = categoryServices;   
         }
-        public Task<CourseRespone> AddCourse(CourseAddRequest courseaddrequest)
+        public async Task<CourseRespone> AddCourse(CourseAddRequest courseaddrequest)
         {
+            int count = (await _courseRepository.GetAll()).Count();
             if(courseaddrequest == null)
             {
                 throw new ArgumentNullException(nameof(courseaddrequest));
             }
-
+            validationHelper.ModelValidation(courseaddrequest);
+            Course course = courseaddrequest.toCourse();
+            course.CourseId = ++count;
+            return course.toCourseRespone();
 
         }
 
@@ -117,9 +124,22 @@ namespace CourseEdu_Core.Services
             return sortedCourses;
         }
 
-        public Task<CourseRespone> UpdateCourse(CourseRespone courseRespone)
+        public async Task<CourseRespone> UpdateCourse(CourseRespone courseRespone) // Luoi nen lay thang nay ra lam courseUpdaterequest luon =w=
         {
-            throw new NotImplementedException();
+           if(courseRespone == null)
+                throw new ArgumentNullException(nameof(courseRespone));
+            validationHelper.ModelValidation(courseRespone);
+            Course course = await _courseRepository.GetById(courseRespone.CourseId);
+            if(course == null)
+                throw new ArgumentNullException("Course not exist");
+            course.CourseName = courseRespone.CourseName;
+            course.CoursePrice = courseRespone.CoursePrice;
+            course.CategoryId = courseRespone.CategoryId;
+            course.CourseDescription = courseRespone.CourseDescription;
+            
+            await _courseRepository.UpdateCourse(course);
+            return course.toCourseRespone();
+
         }
     }
 }
