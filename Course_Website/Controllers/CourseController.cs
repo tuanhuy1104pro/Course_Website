@@ -1,4 +1,5 @@
-﻿using CourseEdu_Core.DTO;
+﻿using Course_Website.MultiModels;
+using CourseEdu_Core.DTO;
 using CourseEdu_Core.Enum;
 using CourseEdu_Core.IServices;
 using CourseEdu_Core.Services;
@@ -18,9 +19,12 @@ namespace Course_Website.Controllers
 
         }
         [Route("/Course", Name = "Course")]
-        public IActionResult Course()
+        public async Task<IActionResult> Course()
         {
-            return View();
+            MultiListModels multiListModels = new MultiListModels();
+            multiListModels.categoryRespones = await _categoryService.GetList();
+            multiListModels.courseRespones = await _Courseservices.GetAll();
+            return View(multiListModels);
         }
         [HttpGet]
         [Route("/Course/List",Name ="CourseList")]
