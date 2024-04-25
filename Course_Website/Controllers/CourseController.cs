@@ -28,10 +28,12 @@ namespace Course_Website.Controllers
         }
         [HttpGet]
         [Route("/Course/List",Name ="CourseList")]
-        public async Task<IActionResult> Courses(string? sortBy,string? searchString, SortOrder order = SortOrder.Ascending )
+        public async Task<IActionResult> Courses(string? sortBy,string? searchString,string? searchBy, SortOrder order = SortOrder.Ascending )
         {
-            List<CourseRespone> listCourse = await _Courseservices.GetAll(); 
-            return View(listCourse);
+            MultiListModels multiListModels = new MultiListModels();
+            multiListModels.courseRespones = await _Courseservices.GetAll();
+            multiListModels.categoryRespones = await _categoryService.GetList();
+            return View(multiListModels);
         }
     }
 }

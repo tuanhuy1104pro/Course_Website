@@ -1,4 +1,4 @@
-﻿@model List<CourseRespone>
+﻿@model MultiListModels
  <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
     <div class="container py-5">
@@ -27,10 +27,30 @@
                 <h1 class="mb-5">Courses</h1>
             </div>
             @* searchBar Start*@
+            <!-- Filter Bar -->
+            <div class="row g-4 justify-content-around">
+                <!-- Thanh lọc thể loại cố định -->
+                <nav id="sidebar" class="position-fixed">
+                    Filter
+                    <!-- Danh sách thể loại -->
+                    <ul class="list-unstyled components">
+                        @foreach (var item in Model.categoryRespones)
+                        {
+                            <li>
+                                <input id=@item.CategoryId type="checkbox" name="@nameof(item.CategoryId)" value=@item.CategoryId>
+                                <label for=@item.CategoryId)>@item.CategoryName</label>
+                            </li>
+                        }
+                        <!-- Thêm các thể loại khác tại đây -->
+                    </ul>
+                    <button class="bg-primary">Submit</button>
+                </nav>
+            </div>
+
 
             @* searchBar End*@
             <div class="row g-4 justify-content-center">
-                @foreach (CourseRespone course in Model)
+                @foreach (CourseRespone course in Model.courseRespones)
                 {
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="course-item bg-light">
@@ -66,4 +86,23 @@
     </div>
     <!-- Courses End -->
  </form>
-
+<script>
+    window.onload = function () {
+        var checkboxes = document.querySelectorAll("input[type=checkbox]");
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].addEventListener("change", function () {
+                if (this.checked) {
+                    for (var j = 0; j < checkboxes.length; j++) {
+                        if (checkboxes[j] != this) {
+                            checkboxes[j].disabled = true;
+                        }
+                    }
+                } else {
+                    for (var j = 0; j < checkboxes.length; j++) {
+                        checkboxes[j].disabled = false;
+                    }
+                }
+            });
+        }
+    }
+</script>
