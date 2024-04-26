@@ -28,7 +28,7 @@ namespace Course_Website.Controllers
         }
         [HttpGet]
         [Route("/Course/List",Name ="CourseList")]
-        public async Task<IActionResult> Courses(string? sortBy,string? searchString,string? searchBy, SortOrder order = SortOrder.Ascending )
+        public async Task<IActionResult> Courses(string sortBy = nameof(CourseRespone.CourseName),string? searchString="",string? searchBy="", SortOrder order = SortOrder.Ascending )
         {
             MultiListModels multiListModels = new MultiListModels();
             multiListModels.courseRespones = await _Courseservices.GetAll();
