@@ -17,5 +17,11 @@ namespace Course_Website.Controllers
         {
             return View();
         }
+
+        //[HttpPost("[action]")]
+        //public IActionResult SignUp()
+        //{
+
+        //}
     }
 }

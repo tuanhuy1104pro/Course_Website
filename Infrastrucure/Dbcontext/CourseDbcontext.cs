@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CourseEdu_Core.Domain.IdentityEntities;
 using CourseEdu_Core.Domain.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace Infrastrucure.Dbcontext
 {
-    public class CourseDbcontext : DbContext
+    public class CourseDbcontext : IdentityDbContext<ApplicationUsers,ApplicationRoles,Guid>
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Course> Courses { get; set; }

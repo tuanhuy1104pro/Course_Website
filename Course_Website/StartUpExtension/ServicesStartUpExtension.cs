@@ -20,6 +20,9 @@ namespace Course_Website.StartUpExtension
             {
                 option.UseSqlServer(configuration.GetConnectionString("Default"));
             });
+
+
+
             return services;
         }
     }
